@@ -3,12 +3,12 @@ package com.goldmediatech.vms.service;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.goldmediatech.vms.configuration.JwtUtil;
-import com.goldmediatech.vms.persistence.UserRepository;
-import com.goldmediatech.vms.web.message.LoginRequest;
+import com.goldmediatech.vms.persistence.UserLoader;
+import com.goldmediatech.vms.service.dto.JwtDto;
+import com.goldmediatech.vms.service.dto.UserDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,27 +16,29 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class AuthService {
 
-    private final UserRepository userRepository;
+    private final UserLoader userLoader;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 
-    public AuthService(UserRepository userRepository, AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
-        this.userRepository = userRepository;
+    public AuthService(UserLoader userLoader, AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
+        this.userLoader = userLoader;
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
 
-    public String authenticate(LoginRequest loginRequest) {
-        var user = userRepository.findByUsername(loginRequest.username())
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("[AUTH] User %s not found", loginRequest.username())));
+    public JwtDto authenticate(UserDto dto) {
+        var user = userLoader.loadUser(dto);
 
-        if (!user.getPassword().equals(loginRequest.password())) {
+        if (!user.getPassword().equals(dto.getPassword())) {
             throw new BadCredentialsException("[AUTH] Invalid credentials");
         }
 
         var authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.username(), loginRequest.password())
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
         );
-        return jwtUtil.generateToken(authentication);
+
+        return JwtDto.builder()
+                .token(jwtUtil.generateToken(authentication))
+                .build();
     }
 }

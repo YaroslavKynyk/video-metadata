@@ -1,4 +1,4 @@
-package com.goldmediatech.vms.web;
+package com.goldmediatech.vms.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

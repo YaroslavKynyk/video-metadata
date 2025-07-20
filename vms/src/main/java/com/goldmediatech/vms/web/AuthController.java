@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.goldmediatech.vms.service.AuthService;
+import com.goldmediatech.vms.util.AuthMapper;
 import com.goldmediatech.vms.web.message.AuthResponse;
 import com.goldmediatech.vms.web.message.LoginRequest;
 
@@ -22,7 +23,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest) {
-        var token = authService.authenticate(loginRequest);
-        return ResponseEntity.ok(new AuthResponse(token));
+        var response = AuthMapper.toAuthResponse(
+            authService.authenticate(
+                AuthMapper.toUserDto(loginRequest)));
+        return ResponseEntity.ok(response);
     }
 }

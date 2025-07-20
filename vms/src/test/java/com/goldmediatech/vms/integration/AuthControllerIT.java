@@ -1,13 +1,14 @@
 package com.goldmediatech.vms.integration;
 
-import com.goldmediatech.vms.web.message.AuthResponse;
-import com.goldmediatech.vms.web.message.LoginRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
+import com.goldmediatech.vms.web.message.AuthResponse;
+import com.goldmediatech.vms.web.message.LoginRequest;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;

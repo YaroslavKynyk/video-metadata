@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 public class UserRepository {
 
     private static final Map<String, UserEntity> USERS_MOCK = Map.of(
-        "system", new UserEntity("system", "roboto", "SYSTEM"),
-        "odin", new UserEntity("odin", "thunder", "ADMIN"),
-        "thor", new UserEntity("thor", "hammer", "USER")
+        "system", new UserEntity(1, "system", "roboto", "SYSTEM"),
+        "odin", new UserEntity(2, "odin", "thunder", "ADMIN"),
+        "thor", new UserEntity(3, "thor", "hammer", "USER")
     );
 
     public Optional<UserEntity> findByUsername(final String username) {
@@ -20,14 +20,20 @@ public class UserRepository {
     }
 
     public static class UserEntity {
+        private long id;
         private String username;
         private String password;
         private String role;
 
-        public UserEntity(String username, String password, String role) {
+        public UserEntity(long id, String username, String password, String role) {
+            this.id = id;
             this.username = username;
             this.password = password;
             this.role = role;
+        }
+
+        public long getId() {
+            return id;
         }
 
         public String getUsername() {

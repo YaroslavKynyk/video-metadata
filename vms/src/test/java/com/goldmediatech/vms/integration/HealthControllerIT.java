@@ -11,8 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import com.goldmediatech.vms.service.AuthService;
+import com.goldmediatech.vms.service.dto.JwtDto;
+import com.goldmediatech.vms.service.dto.UserDto;
 import com.goldmediatech.vms.web.message.HealthResponse;
-import com.goldmediatech.vms.web.message.LoginRequest;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,11 +29,14 @@ public class HealthControllerIT extends BaseIntegrationTest {
     @Test
     @DisplayName("[HEALTH] Status 200 when service is up and user role is ADMIN")
     void health_whenServiceIsUp_andUserRoleAdmin_thenReturnStatus200() {
-        final String jwt = authService.authenticate(new LoginRequest("odin", "thunder"));
+        final JwtDto jwt = authService.authenticate(UserDto.builder()
+                .username("odin")
+                .password("thunder")
+                .build());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(jwt);
+        headers.setBearerAuth(jwt.getToken());
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
@@ -51,11 +55,14 @@ public class HealthControllerIT extends BaseIntegrationTest {
     @Test
     @DisplayName("[HEALTH] Status 200 when service is up and user role is SYSTEM")
     void health_whenServiceIsUp_andUserRoleSystem_thenReturnStatus200() {
-        final String jwt = authService.authenticate(new LoginRequest("system", "roboto"));
+        final JwtDto jwt = authService.authenticate(UserDto.builder()
+                .username("system")
+                .password("roboto")
+                .build());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(jwt);
+        headers.setBearerAuth(jwt.getToken());
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
@@ -90,11 +97,14 @@ public class HealthControllerIT extends BaseIntegrationTest {
     @Test
     @DisplayName("[HEALTH] Status 403 when user is not authorized")
     void health_whenUserIsNotAuthorized_thenReturnStatus403() {
-        final String jwt = authService.authenticate(new LoginRequest("thor", "hammer"));
+        final JwtDto jwt = authService.authenticate(UserDto.builder()
+                .username("thor")
+                .password("hammer")
+                .build());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(jwt);
+        headers.setBearerAuth(jwt.getToken());
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
