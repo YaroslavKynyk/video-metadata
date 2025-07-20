@@ -45,8 +45,9 @@ public class AuthControllerTest {
     @DisplayName("[LOGIN] Successful login")
     void login_whenCredentialsAreValid_thenStatusIsOk_andJwtTokenIsReturned() throws Exception {
         // GIVEN
-        final var request = new LoginRequest("testuser", "testpass");
-        final var requestBody = """
+        final String token = "mockedToken";
+        final LoginRequest request = new LoginRequest("testuser", "testpass");
+        final String requestBody = """
             {
                 "username": "testuser",
                 "password": "testpass"
@@ -54,7 +55,7 @@ public class AuthControllerTest {
             """;
 
         // WHEN
-        when(authService.authenticate(request)).thenReturn("mockedToken");
+        when(authService.authenticate(request)).thenReturn(token);
 
         // THEN
         mockMvc.perform(post(AUTH_LOGIN_URL)
@@ -64,7 +65,7 @@ public class AuthControllerTest {
                         status().isOk(),
                         result -> {
                             var responseBody = result.getResponse().getContentAsString();
-                            assert responseBody.contains("mockedToken");
+                            assert responseBody.contains(token);
                         });
     }
 
@@ -72,9 +73,8 @@ public class AuthControllerTest {
     @DisplayName("[LOGIN] Invalid credentials")
     void login_whenCredentialsAreInvalid_thenStatusIsUnauthorized() throws Exception {
         // GIVEN
-        final var request = new LoginRequest("invaliduser", "invalidpass");
-
-        final var requestBody = """
+        final LoginRequest request = new LoginRequest("invaliduser", "invalidpass");
+        final String requestBody = """
             {
                 "username": "invaliduser",
                 "password": "invalidpass"
