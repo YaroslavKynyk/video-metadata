@@ -3,18 +3,12 @@ package com.goldmediatech.vms.integration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.web.client.DefaultResponseErrorHandler;
-import org.springframework.web.client.RestTemplate;
 
 import com.goldmediatech.vms.service.AuthService;
 import com.goldmediatech.vms.web.message.HealthResponse;
@@ -25,32 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-
-@ActiveProfiles("test")
 @DisplayName("HealthController Integration Tests")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class HealthControllerIT {
+public class HealthControllerIT extends BaseIntegrationTest {
 
     @Autowired
     private AuthService authService;
-
-    @LocalServerPort
-    private int port;
-
-    private final RestTemplate restTemplate = new RestTemplate();
-
-    @BeforeEach
-    public void setUp() {
-        // Set up RestTemplate to not throw exceptions for any status code
-        // Otherwise restTemplate will throw an exception instead of returning a ResponseEntity with the error status.
-        restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
-            @Override
-            public boolean hasError(ClientHttpResponse response) {
-                return false;
-            }
-        });
-    }
 
     @Test
     @DisplayName("[HEALTH] Status 200 when service is up and user role is ADMIN")
@@ -63,7 +36,7 @@ public class HealthControllerIT {
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
-            getBaseUrl(),
+            baseUrl("/health"),
             HttpMethod.GET,
             entity,
             HealthResponse.class);
@@ -86,7 +59,7 @@ public class HealthControllerIT {
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
-            getBaseUrl(),
+            baseUrl("/health"),
             HttpMethod.GET,
             entity,
             HealthResponse.class);
@@ -106,7 +79,7 @@ public class HealthControllerIT {
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
-            getBaseUrl(),
+            baseUrl("/health"),
             HttpMethod.GET,
             entity,
             HealthResponse.class);
@@ -125,15 +98,11 @@ public class HealthControllerIT {
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
-            getBaseUrl(),
+            baseUrl("/health"),
             HttpMethod.GET,
             entity,
             HealthResponse.class);
 
         assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
-    }
-
-    private String getBaseUrl() {
-        return "http://localhost:" + port + "/health";
     }
 }
