@@ -29,6 +29,6 @@ public final class AuthMapper {
     }
 
     public static AuthResponse toAuthResponse(JwtDto dto) {
-        return new AuthResponse(dto.getToken());
+        return new AuthResponse(dto.token());
     }
 }

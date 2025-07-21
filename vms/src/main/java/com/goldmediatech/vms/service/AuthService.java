@@ -10,9 +10,6 @@ import com.goldmediatech.vms.persistence.UserLoader;
 import com.goldmediatech.vms.service.dto.JwtDto;
 import com.goldmediatech.vms.service.dto.UserDto;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Service
 public class AuthService {
 
@@ -29,12 +26,12 @@ public class AuthService {
     public JwtDto authenticate(UserDto dto) {
         var user = userLoader.loadUser(dto);
 
-        if (!user.getPassword().equals(dto.getPassword())) {
+        if (!user.password().equals(dto.password())) {
             throw new BadCredentialsException("[AUTH] Invalid credentials");
         }
 
         var authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+                new UsernamePasswordAuthenticationToken(user.username(), user.password())
         );
 
         return JwtDto.builder()

@@ -16,8 +16,8 @@ public class UserLoader {
     }
 
     public UserDto loadUser(UserDto userDto) {
-        return userRepository.findByUsername(userDto.getUsername())
+        return userRepository.findByUsername(userDto.username())
                 .map(entity -> AuthMapper.toUserDto(entity))
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("[AUTH] User %s not found", userDto.getUsername())));
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("[AUTH] User %s not found", userDto.username())));
     }
 }

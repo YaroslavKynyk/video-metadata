@@ -36,7 +36,7 @@ public class HealthControllerIT extends BaseIntegrationTest {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(jwt.getToken());
+        headers.setBearerAuth(jwt.token());
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
@@ -62,7 +62,7 @@ public class HealthControllerIT extends BaseIntegrationTest {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(jwt.getToken());
+        headers.setBearerAuth(jwt.token());
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
@@ -104,7 +104,7 @@ public class HealthControllerIT extends BaseIntegrationTest {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(jwt.getToken());
+        headers.setBearerAuth(jwt.token());
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         ResponseEntity<HealthResponse> response = restTemplate.exchange(
