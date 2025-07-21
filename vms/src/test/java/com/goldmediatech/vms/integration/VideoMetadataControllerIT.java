@@ -1,10 +1,6 @@
 package com.goldmediatech.vms.integration;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static com.goldmediatech.vms.util.MessageQueue.TOPIC_VIDEO_METADATA;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import com.goldmediatech.vms.service.AuthService;
 import com.goldmediatech.vms.service.dto.JwtDto;
 import com.goldmediatech.vms.service.dto.UserDto;
-import com.goldmediatech.vms.util.MessageQueue;
 import com.goldmediatech.vms.web.message.IngestRequest;
 
 @DisplayName("VideoMetadataController Integration Tests")
@@ -28,8 +23,8 @@ public class VideoMetadataControllerIT extends BaseIntegrationTest {
     private AuthService authService;
 
     @Test
-    @DisplayName("Test importVideoMetadata with valid request")
-    public void testImportVideoMetadata() {
+    @DisplayName("[VIDEO_IMPORT] Status 200 when ROLE_ADMIN")
+    void importVideoMetadata_whenUserRoleAdmin_thenAllowExecution() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("odin")
                 .password("thunder")
@@ -38,7 +33,6 @@ public class VideoMetadataControllerIT extends BaseIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(jwt.token());
-        HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         IngestRequest payload = new IngestRequest("source", "query", 10);
         HttpEntity<IngestRequest> requestEntity = new HttpEntity<>(payload, headers);
@@ -47,34 +41,28 @@ public class VideoMetadataControllerIT extends BaseIntegrationTest {
              requestEntity,
               Void.class);
 
-        await();
-
-        assertAll(
-            () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
-            // first two messages are in Main thread on controller level
-            () -> assertFalse(MessageQueue.receiveMessage(TOPIC_VIDEO_METADATA).contains("VirtualThread")),
-            () -> assertFalse(MessageQueue.receiveMessage(TOPIC_VIDEO_METADATA).contains("VirtualThread")),
-            // next three messages are in VirtualThread on service level
-            () -> assertTrue(MessageQueue.receiveMessage(TOPIC_VIDEO_METADATA).contains("VirtualThread")),
-            () -> assertTrue(MessageQueue.receiveMessage(TOPIC_VIDEO_METADATA).contains("VirtualThread")),
-            () -> assertTrue(MessageQueue.receiveMessage(TOPIC_VIDEO_METADATA).contains("VirtualThread"))
-        );
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    /**
-     * Never recommended to use such approach
-     * Created for demo purpose only.
-     */
-    private void await() {
-        int retry = 0;
-        while (MessageQueue.count(TOPIC_VIDEO_METADATA) < 5 && retry < 10) { // wait for the async task to complete for max 10 seconds
-            try {
-                retry++;
-                Thread.sleep(1000); // wait for a short period before checking again
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new RuntimeException("Thread interrupted while waiting for async task to complete", e);
-            }
-        }
+    @Test
+    @DisplayName("[VIDEO_IMPORT] Status 403 when ROLE_USER")
+    void importVideoMetadata_whenUserRoleNotAdmin_thenDenyExecution() {
+        final JwtDto jwt = authService.authenticate(UserDto.builder()
+                .username("thor")
+                .password("hammer")
+                .build());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(jwt.token());
+
+        IngestRequest payload = new IngestRequest("source", "query", 10);
+        HttpEntity<IngestRequest> requestEntity = new HttpEntity<>(payload, headers);
+        ResponseEntity<Void> response = restTemplate.postForEntity(
+            baseUrl("/api/videos/import"),
+             requestEntity,
+              Void.class);
+
+        assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
     }
 }

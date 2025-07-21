@@ -1,6 +1,7 @@
 package com.goldmediatech.vms.web;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class VideoMetadataController {
     }
 
     @PostMapping("/import")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> importVideoMetadata(@RequestBody IngestRequest request) {
         MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, String.format("[%s] Requesting video metadata", Thread.currentThread()));
         videoService.importVideoMetadata(VideoMetadataMapper.toIngestDto(request));

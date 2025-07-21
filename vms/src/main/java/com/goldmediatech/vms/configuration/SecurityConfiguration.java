@@ -32,8 +32,9 @@ public class SecurityConfiguration {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll()
-                        .requestMatchers("/api/**").authenticated()
-                        .requestMatchers("/health").hasAnyRole("ADMIN", "SYSTEM"))
+                        .requestMatchers("/api/videos/import").hasAnyRole("ADMIN")
+                        .requestMatchers("/health").hasAnyRole("ADMIN", "SYSTEM")
+                        .requestMatchers("/api/**").authenticated())
                 .anonymous(anonymous -> anonymous.disable());
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

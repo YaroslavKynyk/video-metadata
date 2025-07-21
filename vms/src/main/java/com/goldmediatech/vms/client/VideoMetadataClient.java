@@ -12,7 +12,7 @@ public class VideoMetadataClient {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } // Simulate latency for the reque
+        } // Simulate latency for the request
         return new Object(); // Simulate a response
     }
 }
