@@ -32,6 +32,7 @@ public class SecurityConfiguration {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/api/videos/import").hasAnyRole("ADMIN")
                         .requestMatchers("/health").hasAnyRole("ADMIN", "SYSTEM")
                         .requestMatchers("/api/**").authenticated())

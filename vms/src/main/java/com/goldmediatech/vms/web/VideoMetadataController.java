@@ -3,8 +3,11 @@ package com.goldmediatech.vms.web;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.goldmediatech.vms.service.VideoService;
@@ -25,9 +28,29 @@ public class VideoMetadataController {
     @PostMapping("/import")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> importVideoMetadata(@RequestBody IngestRequest request) {
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, String.format("[%s] Requesting video metadata", Thread.currentThread()));
+        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA,
+                String.format("[%s] Requesting video metadata", Thread.currentThread()));
         videoService.importVideoMetadata(VideoMetadataMapper.toIngestDto(request));
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, String.format("[%s] Video metadata import request sent", Thread.currentThread()));
+        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA,
+                String.format("[%s] Video metadata import request sent", Thread.currentThread()));
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> loadAllVideos(
+            @RequestParam(required = false) String source,
+            @RequestParam(required = false) String uploadDate,
+            @RequestParam(required = false) Integer duration) {
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> loadVideo(@PathVariable String id) {
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/stats")
+    public ResponseEntity<?> loadVideoStatistics() {
         return ResponseEntity.ok().build();
     }
 }

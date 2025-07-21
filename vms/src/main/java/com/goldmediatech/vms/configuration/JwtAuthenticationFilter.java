@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         // Configurable list of public endpoints
         var publicEndpoints = List.of("/auth/login");
         var path = request.getServletPath();
-        if (publicEndpoints.contains(path)) {
+        if (path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs") || publicEndpoints.contains(path)) {
             log.debug("[AUTH] Public endpoint accessed: {}", path);
             filterChain.doFilter(request, response);
             return;
