@@ -1,5 +1,16 @@
 package com.goldmediatech.vms.web;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +28,22 @@ import com.goldmediatech.vms.web.message.IngestRequest;
 
 @RestController
 @RequestMapping("/api/videos")
+@Tag(
+    name = "Video Metadata",
+    description = "Operations related to processing videos metadata."
+)
+@SecurityRequirement(name = "JWT Auth")
+@SecurityScheme(
+    name = "JWT Auth",
+    type = SecuritySchemeType.HTTP,
+    bearerFormat = "JWT",
+    scheme = "bearer",
+    description = "JWT Authentication for API access"
+)
+@ApiResponses(value = {
+    @ApiResponse(responseCode = "403", description = "Forbidden: Missing/invalid token or insufficient permissions."),
+    @ApiResponse(responseCode = "500", description = "Internal Server Error: An unexpected error occurred on the server.")
+})
 public class VideoMetadataController {
 
     private final VideoService videoService;
@@ -25,6 +52,46 @@ public class VideoMetadataController {
         this.videoService = videoService;
     }
 
+    @Operation(
+        summary = "Import video metadata",
+        description = """
+                    Initiates an asynchronous process to import video metadata from specified external source.
+                    Only users with the ADMIN role can access this endpoint.
+                    """,
+        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            required = true,
+            content = @Content(
+                schema = @Schema(implementation = IngestRequest.class),
+                examples = {
+                    @ExampleObject(
+                    name = "Import from YouTube Channel",
+                    description = "Import all videos metadata from a specified YouTube channel",
+                    value = """
+                            { 
+                                "source": "YouTube",
+                                "query": "GMT Tutorials",
+                                "limit": "0"
+                            }
+                            """
+                    ),
+                    @ExampleObject(
+                        name = "Import from Mock Service",
+                        description = "Import latest 1000 videos from a mock service on specified topic",
+                        value = """
+                            { 
+                                "source": "Mock",
+                                "query": "Java Explained",
+                                "limit": "1000"
+                            }
+                            """
+                    )
+                }
+            )
+        ),
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Video metadata import request sent and processed asynchronously in the background"),
+        }
+    )
     @PostMapping("/import")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> importVideoMetadata(@RequestBody IngestRequest request) {
