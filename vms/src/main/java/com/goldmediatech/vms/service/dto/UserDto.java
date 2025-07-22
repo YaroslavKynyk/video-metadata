@@ -1,7 +1,7 @@
 package com.goldmediatech.vms.service.dto;
 
 public record UserDto(
-    long id,
+    Long id,
     String username,
     String password,
     String role
@@ -11,12 +11,12 @@ public record UserDto(
     }
 
     public static class UserDtoBuilder {
-        private long id;
+        private Long id;
         private String username;
         private String password;
         private String role;
 
-        public UserDtoBuilder id(long id) {
+        public UserDtoBuilder id(Long id) {
             this.id = id;
             return this;
         }

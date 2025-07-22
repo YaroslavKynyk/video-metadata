@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.goldmediatech.vms.persistence.UserRepository;
-import com.goldmediatech.vms.persistence.UserRepository.UserEntity;
+import com.goldmediatech.vms.persistence.UserLoader;
+import com.goldmediatech.vms.service.dto.UserDto;
 import com.goldmediatech.vms.util.MessageQueue;
 
 import jakarta.annotation.PostConstruct;
@@ -14,11 +14,11 @@ import jakarta.annotation.PostConstruct;
 public class VmsApplication {
 
 	private final PasswordEncoder encoder;
-	private final UserRepository userRepository;
+	private final UserLoader userLoader;
 
-	public VmsApplication(PasswordEncoder encoder, UserRepository userRepository) {
+	public VmsApplication(PasswordEncoder encoder, UserLoader userLoader) {
 		this.encoder = encoder;
-		this.userRepository = userRepository;
+		this.userLoader = userLoader;
 	}
 
 	public static void main(String[] args) {
@@ -28,9 +28,9 @@ public class VmsApplication {
 	@PostConstruct
 	public void init() {
 		MessageQueue.createTopic(MessageQueue.TOPIC_VIDEO_METADATA);
-		userRepository.save(new UserEntity(1, "system", encoder.encode("SystemPassword1@3"), "SYSTEM"));
-		userRepository.save(new UserEntity(2, "odin", encoder.encode("OdinPassword1@3"), "ADMIN"));
-		userRepository.save(new UserEntity(3, "thor", encoder.encode("ThorPassword1@3"), "USER"));
+		userLoader.registerUser(UserDto.builder().id(null).username("system").password(encoder.encode("SystemPassword1@3")).role("SYSTEM").build());
+		userLoader.registerUser(UserDto.builder().id(null).username("odin").password(encoder.encode("OdinPassword1@3")).role("ADMIN").build());
+		userLoader.registerUser(UserDto.builder().id(null).username("thor").password(encoder.encode("ThorPassword1@3")).role("USER").build());
 	}
 
 }

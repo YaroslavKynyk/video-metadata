@@ -2,6 +2,7 @@ package com.goldmediatech.vms.web;
 
 import com.goldmediatech.vms.configuration.JwtUtil;
 import com.goldmediatech.vms.configuration.SecurityConfiguration;
+import com.goldmediatech.vms.persistence.UserLoader;
 import com.goldmediatech.vms.persistence.UserRepository;
 import com.goldmediatech.vms.service.AuthService;
 import com.goldmediatech.vms.service.DefaultUserDetailService;
@@ -44,6 +45,9 @@ public class AuthControllerUT {
 
     @MockitoBean
     private UserRepository userRepository;
+
+    @MockitoBean
+    private UserLoader userLoader;
 
     @Test
     @DisplayName("[LOGIN] Successful login")

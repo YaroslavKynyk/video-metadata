@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.goldmediatech.vms.configuration.JwtUtil;
 import com.goldmediatech.vms.configuration.SecurityConfiguration;
+import com.goldmediatech.vms.persistence.UserLoader;
 import com.goldmediatech.vms.persistence.UserRepository;
 import com.goldmediatech.vms.service.DefaultUserDetailService;
 
@@ -41,6 +42,9 @@ public class HealthControllerUT {
 
     @MockitoBean
     private UserRepository userRepository;
+
+    @MockitoBean
+    private UserLoader userLoader;
 
     @Test
     @DisplayName("[HEALTH] Authorized admin role health check")

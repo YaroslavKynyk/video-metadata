@@ -6,24 +6,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.goldmediatech.vms.persistence.UserRepository;
+import com.goldmediatech.vms.persistence.UserLoader;
+import com.goldmediatech.vms.service.dto.UserDto;
 
 @Service
 public class DefaultUserDetailService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+    private final UserLoader userLoader;
 
-    public DefaultUserDetailService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DefaultUserDetailService(UserLoader userLoader) {
+        this.userLoader = userLoader;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username)
-                .map(entity -> User
-                        .withUsername(entity.getUsername())
-                        .password(entity.getPassword())
-                        .authorities("ROLE_" + entity.getRole()).build())
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("[AUTH] User %s not found", username)));
+        var user = userLoader.loadUser(UserDto.builder().username(username).build());
+        return User
+                .withUsername(user.username())
+                .password(user.password())
+                .authorities("ROLE_" + user.role()).build();
     }
 }
