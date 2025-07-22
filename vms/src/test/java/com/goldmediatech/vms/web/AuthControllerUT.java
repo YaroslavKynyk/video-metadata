@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayName("AuthController Unit Tests")
 @WebMvcTest(AuthController.class)
 @Import(SecurityConfiguration.class)
-public class AuthControllerTest {
+public class AuthControllerUT {
 
     private static final String AUTH_LOGIN_URL = "/auth/login";
 
@@ -48,12 +48,12 @@ public class AuthControllerTest {
         final String token = "mockedToken";
         final UserDto dto = UserDto.builder()
                 .username("testuser")
-                .password("testpass")
+                .password("TestPassword1@3")
                 .build();
         final String requestBody = """
                 {
                     "username": "testuser",
-                    "password": "testpass"
+                    "password": "TestPassword1@3"
                 }
                 """;
 
@@ -78,12 +78,12 @@ public class AuthControllerTest {
         // GIVEN
         final UserDto dto = UserDto.builder()
                 .username("invaliduser")
-                .password("invalidpass")
+                .password("InvalidPassword1@3")
                 .build();
         final String requestBody = """
                 {
                     "username": "invaliduser",
-                    "password": "invalidpass"
+                    "password": "InvalidPassword1@3"
                 }
                 """;
 
@@ -95,5 +95,27 @@ public class AuthControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @DisplayName("[LOGIN] Weak password")
+    void login_whenPasswordIsWeak_thenStatusIsBadRequest() throws Exception {
+        // GIVEN
+        final UserDto dto = UserDto.builder()
+                .username("testuser")
+                .password("weakpass")
+                .build();
+        final String requestBody = """
+                {
+                    "username": "testuser",
+                    "password": "weakpass"
+                }
+                """;
+
+        // THEN
+        mockMvc.perform(post(AUTH_LOGIN_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody))
+                .andExpect(status().isBadRequest());
     }
 }

@@ -1,5 +1,6 @@
 package com.goldmediatech.vms.persistence;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -8,15 +9,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserRepository {
 
-    private static final Map<String, UserEntity> USERS_MOCK = Map.of(
-        "system", new UserEntity(1, "system", "roboto", "SYSTEM"),
-        "odin", new UserEntity(2, "odin", "thunder", "ADMIN"),
-        "thor", new UserEntity(3, "thor", "hammer", "USER")
-    );
+    private static final Map<String, UserEntity> USERS_MOCK = new HashMap<>();
 
     public Optional<UserEntity> findByUsername(final String username) {
         // Simulate a user lookup
         return Optional.ofNullable(USERS_MOCK.get(username));
+    }
+
+    public void save(UserEntity user) {
+        USERS_MOCK.put(user.getUsername(), user);
     }
 
     public static class UserEntity {

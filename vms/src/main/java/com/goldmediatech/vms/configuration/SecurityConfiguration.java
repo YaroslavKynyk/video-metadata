@@ -59,4 +59,12 @@ public class SecurityConfiguration {
     PasswordEncoder localPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
+
+    public static void main(String[] args) {
+        // encrypt pwd with help of bcrypr
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String rawPassword = "ThorPassword1@3"; // Example password
+        String encodedPassword = passwordEncoder.encode(rawPassword);
+        System.out.println("Encoded password: " + encodedPassword);
+    }
 }

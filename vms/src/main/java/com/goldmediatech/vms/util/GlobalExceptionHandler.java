@@ -12,10 +12,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    public static final String CODE_500_ERROR_MESSAGE = "Internal Server Error: An unexpected error occurred on the server.";
+    public static final String CODE_403_ERROR_MESSAGE = "Access denied.";
+    public static final String CODE_401_ERROR_MESSAGE = "Bad credentials";
+    public static final String CODE_400_ERROR_MESSAGE = "Invalid input";
 
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
@@ -23,7 +29,7 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         log.error("[BAD_REQUEST] Validation error occurred", ex);
-        return ResponseEntity.badRequest().body(Map.of("error", "Invalid input"));
+        return ResponseEntity.badRequest().body(Map.of("error", CODE_400_ERROR_MESSAGE));
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
@@ -32,7 +38,7 @@ public class GlobalExceptionHandler {
         log.error("[UNAUTHORIZED] User not found", ex);
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
-                .body(Map.of("error", "Bad credentials"));
+                .body(Map.of("error", CODE_401_ERROR_MESSAGE));
     }
 
     @ExceptionHandler(BadCredentialsException.class)
@@ -41,7 +47,7 @@ public class GlobalExceptionHandler {
         log.error("[UNAUTHORIZED] Bad credentials", ex);
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
-                .body(Map.of("error", "Bad credentials"));
+                .body(Map.of("error", CODE_401_ERROR_MESSAGE));
     }
 
     @ExceptionHandler(AccessDeniedException.class)
@@ -50,7 +56,7 @@ public class GlobalExceptionHandler {
         log.error("[FORBIDDEN] Access denied", ex);
         return ResponseEntity
                 .status(HttpStatus.FORBIDDEN)
-                .body(Map.of("error", "Access denied."));
+                .body(Map.of("error", CODE_403_ERROR_MESSAGE));
     }
 
     @ExceptionHandler(Exception.class)
@@ -59,6 +65,6 @@ public class GlobalExceptionHandler {
         log.error("[INTERNAL_SERVER_ERROR] Unhandled exception occurred", ex);
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(Map.of("error", "Internal server error. Please contact administrator if the problem persists"));
+                .body(Map.of("error", CODE_500_ERROR_MESSAGE));
     }
 }
