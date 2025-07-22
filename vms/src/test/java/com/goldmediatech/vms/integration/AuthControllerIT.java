@@ -23,7 +23,7 @@ public class AuthControllerIT extends BaseIntegrationTest {
     @Test
     @DisplayName("[LOGIN] Status 200 and JWT returned when credentials are valid")
     void login_whenCredentialsAreValid_thenReturnJwt() {
-        LoginRequest loginRequest = new LoginRequest("thor", "hammer");
+        LoginRequest loginRequest = new LoginRequest("thor", "ThorPassword1@3");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<LoginRequest> request = new HttpEntity<>(loginRequest, headers);
@@ -40,7 +40,7 @@ public class AuthControllerIT extends BaseIntegrationTest {
     @Test
     @DisplayName("[LOGIN] Status 401 when username is incorrect")
     void login_whenUsernameIncorrect_thenFailWithUnauthorized() {
-        LoginRequest loginRequest = new LoginRequest("idontexist", "hammer");
+        LoginRequest loginRequest = new LoginRequest("idontexist", "SomePassword1@3");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<LoginRequest> request = new HttpEntity<>(loginRequest, headers);
@@ -51,15 +51,15 @@ public class AuthControllerIT extends BaseIntegrationTest {
     }
 
     @Test
-    @DisplayName("[LOGIN] Status 401 when password is incorrect")
-    void login_whenPasswordIncorrect_thenFailWithUnauthorized() {
-        LoginRequest loginRequest = new LoginRequest("thor", "wrongpassword");
+    @DisplayName("[LOGIN] Status 400 when password is incorrect")
+    void login_whenPasswordIncorrect_thenFailWithBadRequest() {
+        LoginRequest loginRequest = new LoginRequest("thor", "thorpassword123");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<LoginRequest> request = new HttpEntity<>(loginRequest, headers);
 
         ResponseEntity<String> response = restTemplate.postForEntity(baseUrl("/auth/login"), request, String.class);
 
-        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 }

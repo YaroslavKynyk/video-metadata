@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.goldmediatech.vms.configuration.JwtUtil;
 import com.goldmediatech.vms.configuration.SecurityConfiguration;
+import com.goldmediatech.vms.persistence.UserRepository;
 import com.goldmediatech.vms.service.DefaultUserDetailService;
 
 @DisplayName("HealthController Unit Tests")
@@ -38,13 +39,16 @@ public class HealthControllerUT {
     @MockitoBean
     private JwtUtil jwtUtil;
 
+    @MockitoBean
+    private UserRepository userRepository;
+
     @Test
     @DisplayName("[HEALTH] Authorized admin role health check")
     void health_whenAdminUser_thenStatus200() throws Exception {
         // GIVEN
         final String token = "mockedToken";
         final String username = "admin";
-        final String password = "password";
+        final String password = "AdminPassword1@3";
         final String role = "ROLE_ADMIN";
         final UserDetails adminUser = new User(username, password,
                 List.of(new SimpleGrantedAuthority(role)));
@@ -66,7 +70,7 @@ public class HealthControllerUT {
         // GIVEN
         final String token = "mockedToken";
         final String username = "system";
-        final String password = "password";
+        final String password = "SystemPassword1@3";
         final String role = "ROLE_SYSTEM";
         final UserDetails adminUser = new User(username, password,
                 List.of(new SimpleGrantedAuthority(role)));
@@ -88,7 +92,7 @@ public class HealthControllerUT {
         // GIVEN
         final String token = "mockedToken";
         final String username = "unauthorizedUser";
-        final String password = "password";
+        final String password = "SomePassword1@3";
         final String role = "ROLE_USER";
         final UserDetails unauthorizedUser = new User(username, password,
                 List.of(new SimpleGrantedAuthority(role)));

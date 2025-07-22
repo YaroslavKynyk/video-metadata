@@ -27,7 +27,7 @@ public class VideoMetadataControllerIT extends BaseIntegrationTest {
     void importVideoMetadata_whenUserRoleAdmin_thenAllowExecution() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("odin")
-                .password("thunder")
+                .password("OdinPassword1@3")
                 .build());
 
         HttpHeaders headers = new HttpHeaders();
@@ -49,7 +49,7 @@ public class VideoMetadataControllerIT extends BaseIntegrationTest {
     void importVideoMetadata_whenUserRoleNotAdmin_thenDenyExecution() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("thor")
-                .password("hammer")
+                .password("ThorPassword1@3")
                 .build());
 
         HttpHeaders headers = new HttpHeaders();

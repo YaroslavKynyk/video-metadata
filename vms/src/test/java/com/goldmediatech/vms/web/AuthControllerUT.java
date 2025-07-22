@@ -2,6 +2,7 @@ package com.goldmediatech.vms.web;
 
 import com.goldmediatech.vms.configuration.JwtUtil;
 import com.goldmediatech.vms.configuration.SecurityConfiguration;
+import com.goldmediatech.vms.persistence.UserRepository;
 import com.goldmediatech.vms.service.AuthService;
 import com.goldmediatech.vms.service.DefaultUserDetailService;
 import com.goldmediatech.vms.service.dto.JwtDto;
@@ -40,6 +41,9 @@ public class AuthControllerUT {
 
     @MockitoBean
     private JwtUtil jwtUtil;
+
+    @MockitoBean
+    private UserRepository userRepository;
 
     @Test
     @DisplayName("[LOGIN] Successful login")
@@ -101,10 +105,6 @@ public class AuthControllerUT {
     @DisplayName("[LOGIN] Weak password")
     void login_whenPasswordIsWeak_thenStatusIsBadRequest() throws Exception {
         // GIVEN
-        final UserDto dto = UserDto.builder()
-                .username("testuser")
-                .password("weakpass")
-                .build();
         final String requestBody = """
                 {
                     "username": "testuser",

@@ -31,7 +31,7 @@ public class HealthControllerIT extends BaseIntegrationTest {
     void health_whenServiceIsUp_andUserRoleAdmin_thenReturnStatus200() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("odin")
-                .password("thunder")
+                .password("OdinPassword1@3")
                 .build());
 
         HttpHeaders headers = new HttpHeaders();
@@ -57,7 +57,7 @@ public class HealthControllerIT extends BaseIntegrationTest {
     void health_whenServiceIsUp_andUserRoleSystem_thenReturnStatus200() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("system")
-                .password("roboto")
+                .password("SystemPassword1@3")
                 .build());
 
         HttpHeaders headers = new HttpHeaders();
@@ -99,7 +99,7 @@ public class HealthControllerIT extends BaseIntegrationTest {
     void health_whenUserIsNotAuthorized_thenReturnStatus403() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("thor")
-                .password("hammer")
+                .password("ThorPassword1@3")
                 .build());
 
         HttpHeaders headers = new HttpHeaders();

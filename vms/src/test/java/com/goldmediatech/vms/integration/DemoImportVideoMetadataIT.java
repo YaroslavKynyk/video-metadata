@@ -37,7 +37,7 @@ public class DemoImportVideoMetadataIT extends BaseIntegrationTest {
     public void importVideoMetadata_asyncCall() {
         final JwtDto jwt = authService.authenticate(UserDto.builder()
                 .username("odin")
-                .password("thunder")
+                .password("OdinPassword1@3")
                 .build());
 
         HttpHeaders headers = new HttpHeaders();
