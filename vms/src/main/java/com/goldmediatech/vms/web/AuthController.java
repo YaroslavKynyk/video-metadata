@@ -57,7 +57,13 @@ public class AuthController {
                         "username": "thor",
                         "password": "ThorPassword1@3"
                         }
-                        """)
+                        """),
+                @ExampleObject(name = "System User Login", summary = "Login as a system user", value = """
+                        {
+                        "username": "system",
+                        "password": "SystemPassword1@3"
+                        }
+                        """)                        
     })), responses = {
             @ApiResponse(
                 responseCode = "200",

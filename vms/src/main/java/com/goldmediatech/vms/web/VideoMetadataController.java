@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.goldmediatech.vms.service.VideoService;
+import com.goldmediatech.vms.util.GlobalExceptionHandler;
 import com.goldmediatech.vms.util.MessageQueue;
 import com.goldmediatech.vms.util.VideoMetadataMapper;
 import com.goldmediatech.vms.web.message.IngestRequest;
@@ -41,8 +42,10 @@ import com.goldmediatech.vms.web.message.IngestRequest;
     description = "JWT Authentication for API access"
 )
 @ApiResponses(value = {
-    @ApiResponse(responseCode = "403", description = "Forbidden: Missing/invalid token or insufficient permissions."),
-    @ApiResponse(responseCode = "500", description = "Internal Server Error: An unexpected error occurred on the server.")
+        @ApiResponse(responseCode = "400", description = GlobalExceptionHandler.CODE_400_ERROR_MESSAGE),
+        @ApiResponse(responseCode = "401", description = GlobalExceptionHandler.CODE_401_ERROR_MESSAGE),
+        @ApiResponse(responseCode = "403", description = GlobalExceptionHandler.CODE_403_ERROR_MESSAGE),
+        @ApiResponse(responseCode = "500", description = GlobalExceptionHandler.CODE_500_ERROR_MESSAGE)
 })
 public class VideoMetadataController {
 
