@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "vid001",
+    "title": "Exploring the Alps: A Travel Documentary",
+    "creator": "Anna Müller",
+    "uploadDate": "2025-03-15T09:30:00Z",
+    "duration": 5400000,
+    "description": "A breathtaking journey through the Swiss Alps, featuring local culture and stunning landscapes.",
+    "category": "Travel",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid002",
+    "title": "Java 24 Features Deep Dive",
+    "creator": "TechWithTim",
+    "uploadDate": "2025-04-02T14:10:00Z",
+    "duration": 3600000,
+    "description": "A comprehensive overview of new features in Java 24 for developers.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid003",
+    "title": "Street Food in Bangkok",
+    "creator": "Global Eats",
+    "uploadDate": "2025-01-20T18:45:00Z",
+    "duration": 2700000,
+    "description": "Sampling the best street food stalls in Bangkok, Thailand.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid004",
+    "title": "Beginner's Guide to Yoga",
+    "creator": "Wellness Studio",
+    "uploadDate": "2025-02-10T07:00:00Z",
+    "duration": 1800000,
+    "description": "A gentle introduction to yoga for beginners, including basic poses and breathing techniques.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid005",
+    "title": "How to Bake Sourdough Bread",
+    "creator": "Baker's Corner",
+    "uploadDate": "2025-03-05T12:20:00Z",
+    "duration": 4200000,
+    "description": "Step-by-step instructions for baking delicious sourdough bread at home.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid006",
+    "title": "Wildlife of the Amazon Rainforest",
+    "creator": "NatureDocs",
+    "uploadDate": "2025-05-12T16:00:00Z",
+    "duration": 7200000,
+    "description": "Discover the unique animals and plants of the Amazon rainforest.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid007",
+    "title": "Building a REST API with Spring Boot",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-04-18T11:15:00Z",
+    "duration": 4800000,
+    "description": "Learn how to build a RESTful API using Spring Boot and Java.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid008",
+    "title": "The Art of French Pastry",
+    "creator": "Chef Laurent",
+    "uploadDate": "2025-02-28T15:40:00Z",
+    "duration": 3600000,
+    "description": "Masterclass on making classic French pastries from scratch.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid009",
+    "title": "Introduction to Machine Learning",
+    "creator": "AI Simplified",
+    "uploadDate": "2025-03-22T13:00:00Z",
+    "duration": 5400000,
+    "description": "A beginner-friendly introduction to machine learning concepts and applications.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid010",
+    "title": "Urban Gardening Tips",
+    "creator": "GreenThumb",
+    "uploadDate": "2025-04-05T08:30:00Z",
+    "duration": 2400000,
+    "description": "How to start and maintain a productive garden in small urban spaces.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  },
+    {
+    "id": "vid011",
+    "title": "Quantum Computing Explained for Dummies",
+    "creator": "Science Unlocked",
+    "uploadDate": "2025-06-01T10:00:00Z",
+    "duration": 6000000,
+    "description": "Demystifying the complex world of quantum computing with simple analogies.",
+    "category": "Science",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid012",
+    "title": "The History of Ancient Rome: Part 1",
+    "creator": "HistoryBuffs",
+    "uploadDate": "2025-05-20T19:00:00Z",
+    "duration": 7200000,
+    "description": "An in-depth look at the rise and early days of the Roman Empire.",
+    "category": "History",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid013",
+    "title": "Mastering Digital Photography: Composition",
+    "creator": "PixelPerfect",
+    "uploadDate": "2025-06-15T11:30:00Z",
+    "duration": 3000000,
+    "description": "Tips and tricks for improving your photo composition skills.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid014",
+    "title": "DIY Home Renovation: Bathroom Remodel",
+    "creator": "HandyHome",
+    "uploadDate": "2025-04-25T09:00:00Z",
+    "duration": 8100000,
+    "description": "A complete guide to renovating your bathroom on a budget.",
+    "category": "DIY",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid015",
+    "title": "Exploring Deep Sea Creatures",
+    "creator": "Oceanic Expeditions",
+    "uploadDate": "2025-07-01T14:00:00Z",
+    "duration": 6600000,
+    "description": "Dive into the mysterious world of marine life in the deepest parts of the ocean.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid016",
+    "title": "Financial Planning for Beginners",
+    "creator": "MoneySense",
+    "uploadDate": "2025-05-08T10:45:00Z",
+    "duration": 3900000,
+    "description": "Essential steps for starting your personal financial journey.",
+    "category": "Finance",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid017",
+    "title": "The Future of AI in Healthcare",
+    "creator": "MedTech Insights",
+    "uploadDate": "2025-06-22T15:30:00Z",
+    "duration": 4500000,
+    "description": "A discussion on how artificial intelligence is transforming medical diagnostics and treatment.",
+    "category": "Technology",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid018",
+    "title": "Classic Rock Guitar Riffs Tutorial",
+    "creator": "GuitarGuru",
+    "uploadDate": "2025-04-10T17:00:00Z",
+    "duration": 2100000,
+    "description": "Learn to play iconic guitar riffs from the greatest rock bands.",
+    "category": "Music",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid019",
+    "title": "Mindfulness Meditation for Stress Relief",
+    "creator": "Zen Living",
+    "uploadDate": "2025-07-10T07:30:00Z",
+    "duration": 1200000,
+    "description": "A guided meditation session to help reduce stress and promote inner peace.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid020",
+    "title": "Exploring Abandoned Places: Chernobyl Exclusion Zone",
+    "creator": "Urban Explorers",
+    "uploadDate": "2025-05-01T13:00:00Z",
+    "duration": 9000000,
+    "description": "A fascinating and eerie tour of the abandoned city of Pripyat and the Chernobyl Exclusion Zone.",
+    "category": "Documentary",
+    "status": "ACTIVE"
+  },
+    {
+    "id": "vid021",
+    "title": "Cooking with Spices: Indian Cuisine Basics",
+    "creator": "Global Eats",
+    "uploadDate": "2025-07-20T16:00:00Z",
+    "duration": 3300000,
+    "description": "An introduction to essential Indian spices and their uses in everyday cooking.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid022",
+    "title": "Spring Boot Microservices Tutorial: Part 1",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-07-22T09:45:00Z",
+    "duration": 5700000,
+    "description": "Building scalable microservices with Spring Boot and best practices.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid023",
+    "title": "Exploring the Deserts of Sahara",
+    "creator": "NatureDocs",
+    "uploadDate": "2025-07-23T11:00:00Z",
+    "duration": 7800000,
+    "description": "A documentary showcasing the unique ecosystem and challenges of the Sahara desert.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid024",
+    "title": "Advanced JavaScript Techniques for Web Devs",
+    "creator": "TechWithTim",
+    "uploadDate": "2025-07-24T14:30:00Z",
+    "duration": 4200000,
+    "description": "Dive deep into modern JavaScript features and optimization tips.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid025",
+    "title": "The Art of Portrait Photography",
+    "creator": "PixelPerfect",
+    "uploadDate": "2025-07-25T10:15:00Z",
+    "duration": 2700000,
+    "description": "Learn lighting, posing, and editing for stunning portrait photographs.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid026",
+    "title": "Vegan Baking: Delicious Plant-Based Desserts",
+    "creator": "Baker's Corner",
+    "uploadDate": "2025-07-26T12:00:00Z",
+    "duration": 4800000,
+    "description": "Easy and tasty recipes for vegan cakes, cookies, and pastries.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid027",
+    "title": "Historical Battles: The Battle of Waterloo",
+    "creator": "HistoryBuffs",
+    "uploadDate": "2025-07-27T18:30:00Z",
+    "duration": 6900000,
+    "description": "A detailed analysis of the famous Battle of Waterloo and its impact.",
+    "category": "History",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid028",
+    "title": "At-Home Fitness: Full Body Workout (No Equipment)",
+    "creator": "Wellness Studio",
+    "uploadDate": "2025-07-28T07:15:00Z",
+    "duration": 1500000,
+    "description": "A quick and effective full-body workout routine you can do anywhere.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid029",
+    "title": "Understanding Blockchain Technology",
+    "creator": "AI Simplified",
+    "uploadDate": "2025-07-29T11:00:00Z",
+    "duration": 3600000,
+    "description": "An introductory guide to blockchain, cryptocurrencies, and decentralized applications.",
+    "category": "Technology",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid030",
+    "title": "Gardening for Beginners: Essential Tools & Setup",
+    "creator": "GreenThumb",
+    "uploadDate": "2025-07-30T09:00:00Z",
+    "duration": 2800000,
+    "description": "Everything you need to know to start your first garden, from tools to basic setup.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  },
+    {
+    "id": "vid031",
+    "title": "Exploring Ancient Mayan Ruins in Mexico",
+    "creator": "Anna Müller",
+    "uploadDate": "2025-08-05T10:00:00Z",
+    "duration": 5800000,
+    "description": "A detailed documentary on the history and architecture of Chichen Itza and other Mayan sites.",
+    "category": "Travel",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid032",
+    "title": "Deep Learning Fundamentals with TensorFlow",
+    "creator": "AI Simplified",
+    "uploadDate": "2025-08-10T14:15:00Z",
+    "duration": 6500000,
+    "description": "An introduction to neural networks and deep learning concepts using TensorFlow.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid033",
+    "title": "C++ for Game Development: Pointers & Memory",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-08-12T11:00:00Z",
+    "duration": 4000000,
+    "description": "Essential C++ concepts for efficient game development, focusing on memory management.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid034",
+    "title": "Mediterranean Diet: Healthy Recipes for Lunch",
+    "creator": "Global Eats",
+    "uploadDate": "2025-08-15T13:30:00Z",
+    "duration": 2900000,
+    "description": "Simple and delicious recipes inspired by the healthy Mediterranean diet.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid035",
+    "title": "Advanced Python: Decorators and Generators",
+    "creator": "TechWithTim",
+    "uploadDate": "2025-08-18T16:00:00Z",
+    "duration": 3700000,
+    "description": "Exploring powerful Python features for more concise and efficient code.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid036",
+    "title": "Hiking the Appalachian Trail: My Journey",
+    "creator": "Outdoor Adventures",
+    "uploadDate": "2025-08-20T08:00:00Z",
+    "duration": 10800000,
+    "description": "A personal account of trekking the challenging Appalachian Trail.",
+    "category": "Travel",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid037",
+    "title": "Wildlife Photography: Capturing Birds in Flight",
+    "creator": "PixelPerfect",
+    "uploadDate": "2025-08-22T09:10:00Z",
+    "duration": 3100000,
+    "description": "Techniques for freezing motion and getting sharp photos of birds in their natural habitat.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid038",
+    "title": "Home Barista Guide: Perfect Espresso at Home",
+    "creator": "Coffee Crafters",
+    "uploadDate": "2025-08-25T17:00:00Z",
+    "duration": 2200000,
+    "description": "Tips and tricks for making cafe-quality espresso drinks in your own kitchen.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid039",
+    "title": "The Science of Sleep: Improving Your Rest",
+    "creator": "Wellness Studio",
+    "uploadDate": "2025-08-28T06:45:00Z",
+    "duration": 3500000,
+    "description": "Understanding sleep cycles and practical advice for better sleep hygiene.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid040",
+    "title": "Beginner's Guide to Investing in Stocks",
+    "creator": "MoneySense",
+    "uploadDate": "2025-09-01T10:30:00Z",
+    "duration": 4800000,
+    "description": "Fundamental concepts for new investors looking to start trading stocks.",
+    "category": "Finance",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid041",
+    "title": "Amazon Rainforest: Deforestation Crisis",
+    "creator": "NatureDocs",
+    "uploadDate": "2025-09-05T15:00:00Z",
+    "duration": 7500000,
+    "description": "A critical look at the ongoing deforestation in the Amazon and its global impact.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid042",
+    "title": "React Hooks Explained: useState and useEffect",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-09-08T12:00:00Z",
+    "duration": 3800000,
+    "description": "A clear explanation of the most common React Hooks for functional components.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid043",
+    "title": "Traditional Italian Pasta Making",
+    "creator": "Chef Laurent",
+    "uploadDate": "2025-09-10T18:00:00Z",
+    "duration": 3000000,
+    "description": "Learn to make fresh pasta from scratch using traditional Italian methods.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid044",
+    "title": "Cybersecurity for Small Businesses",
+    "creator": "CyberGuardian",
+    "uploadDate": "2025-09-12T09:40:00Z",
+    "duration": 5100000,
+    "description": "Essential cybersecurity practices to protect small businesses from common threats.",
+    "category": "Technology",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid045",
+    "title": "Understanding the Stock Market Crash of 1929",
+    "creator": "HistoryBuffs",
+    "uploadDate": "2025-09-15T14:00:00Z",
+    "duration": 6000000,
+    "description": "An analysis of the events leading to and consequences of the 1929 stock market crash.",
+    "category": "History",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid046",
+    "title": "Minimalist Living: Declutter Your Life",
+    "creator": "Zen Living",
+    "uploadDate": "2025-09-18T07:00:00Z",
+    "duration": 2500000,
+    "description": "Practical tips and benefits of adopting a minimalist lifestyle for less stress.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid047",
+    "title": "Gardening Indoors: Houseplant Care Guide",
+    "creator": "GreenThumb",
+    "uploadDate": "2025-09-20T11:30:00Z",
+    "duration": 2000000,
+    "description": "A comprehensive guide to caring for popular houseplants, from watering to light.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid048",
+    "title": "Astronomy for Kids: Our Solar System",
+    "creator": "Space Explorers",
+    "uploadDate": "2025-09-22T16:00:00Z",
+    "duration": 1800000,
+    "description": "An engaging introduction to the planets and wonders of our solar system for young learners.",
+    "category": "Science",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid049",
+    "title": "Emotional Intelligence: Building Better Relationships",
+    "creator": "Mindful Growth",
+    "uploadDate": "2025-09-25T13:00:00Z",
+    "duration": 3400000,
+    "description": "Understanding and improving emotional intelligence for healthier personal and professional relationships.",
+    "category": "Self-Improvement",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid050",
+    "title": "The Art of Calligraphy: Beginner's Script",
+    "creator": "Handy Crafts",
+    "uploadDate": "2025-09-28T10:00:00Z",
+    "duration": 2700000,
+    "description": "A step-by-step guide to learning basic calligraphy scripts and techniques.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+    {
+    "id": "vid051",
+    "title": "Exploring the Hidden Gems of Portugal",
+    "creator": "Anna Müller",
+    "uploadDate": "2025-10-01T10:00:00Z",
+    "duration": 6200000,
+    "description": "A journey off the beaten path to discover Portugal's lesser-known wonders.",
+    "category": "Travel",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid052",
+    "title": "Machine Learning Best Practices for Production",
+    "creator": "AI Simplified",
+    "uploadDate": "2025-10-05T14:30:00Z",
+    "duration": 7000000,
+    "description": "Strategies and tools for deploying and maintaining ML models in a production environment.",
+    "category": "Education",
+    "status": "PENDING_REVIEW"
+  },
+  {
+    "id": "vid053",
+    "title": "Advanced SQL: Optimizing Database Queries",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-10-08T11:00:00Z",
+    "duration": 4500000,
+    "description": "Techniques and tips for writing highly efficient SQL queries for large datasets.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid054",
+    "title": "Authentic Mexican Tacos Recipe",
+    "creator": "Global Eats",
+    "uploadDate": "2025-10-10T13:45:00Z",
+    "duration": 2800000,
+    "description": "Learn to make traditional Mexican street tacos with homemade tortillas.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid055",
+    "title": "Go Programming Language: Concurrency Patterns",
+    "creator": "TechWithTim",
+    "uploadDate": "2025-10-12T16:00:00Z",
+    "duration": 3900000,
+    "description": "Understanding and implementing Go's powerful concurrency features.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid056",
+    "title": "A Day in the Life of a Park Ranger",
+    "creator": "Outdoor Adventures",
+    "uploadDate": "2025-10-15T09:00:00Z",
+    "duration": 5000000,
+    "description": "Follow a park ranger through a typical day managing wildlife and visitor safety.",
+    "category": "Documentary",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid057",
+    "title": "Black and White Photography: Techniques and Tips",
+    "creator": "PixelPerfect",
+    "uploadDate": "2025-10-18T10:15:00Z",
+    "duration": 3200000,
+    "description": "Master the art of monochrome photography from capture to post-processing.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid058",
+    "title": "Fermenting Foods: Kimchi and Sauerkraut",
+    "creator": "Baker's Corner",
+    "uploadDate": "2025-10-20T17:00:00Z",
+    "duration": 2400000,
+    "description": "A guide to making delicious and healthy fermented vegetables at home.",
+    "category": "Food",
+    "status": "ARCHIVED"
+  },
+  {
+    "id": "vid059",
+    "title": "The Dangers of Screen Time for Kids",
+    "creator": "Wellness Studio",
+    "uploadDate": "2025-10-22T08:30:00Z",
+    "duration": 3000000,
+    "description": "Understanding the impact of excessive screen time on children's development and health.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid060",
+    "title": "Cryptocurrency Basics: Beyond Bitcoin",
+    "creator": "MoneySense",
+    "uploadDate": "2025-10-25T11:45:00Z",
+    "duration": 4200000,
+    "description": "An overview of various cryptocurrencies and the underlying blockchain technology.",
+    "category": "Finance",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid061",
+    "title": "The Serengeti Migration: A Wildlife Spectacle",
+    "creator": "NatureDocs",
+    "uploadDate": "2025-10-28T15:00:00Z",
+    "duration": 7800000,
+    "description": "Witness the incredible annual migration of wildebeest and other animals across the Serengeti plains.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid062",
+    "title": "DevOps Essentials: CI/CD Pipelines",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-10-30T12:00:00Z",
+    "duration": 5500000,
+    "description": "A practical guide to implementing Continuous Integration and Continuous Delivery.",
+    "category": "Technology",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid063",
+    "title": "Korean Street Food Tour: Seoul",
+    "creator": "Global Eats",
+    "uploadDate": "2025-11-01T18:00:00Z",
+    "duration": 3100000,
+    "description": "Exploring the vibrant street food scene of Seoul, South Korea.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid064",
+    "title": "Data Structures & Algorithms: Linked Lists",
+    "creator": "TechWithTim",
+    "uploadDate": "2025-11-03T09:30:00Z",
+    "duration": 4000000,
+    "description": "Understanding linked lists, their operations, and common use cases.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid065",
+    "title": "Beginner's Guide to Digital Painting",
+    "creator": "Art Fundamentals",
+    "uploadDate": "2025-11-05T14:00:00Z",
+    "duration": 4800000,
+    "description": "An introduction to digital painting software and basic techniques for aspiring artists.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid066",
+    "title": "Estate Planning: What You Need to Know",
+    "creator": "MoneySense",
+    "uploadDate": "2025-11-07T10:00:00Z",
+    "duration": 3600000,
+    "description": "Essential information on wills, trusts, and securing your financial legacy.",
+    "category": "Finance",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid067",
+    "title": "The Science of Happiness: Practical Strategies",
+    "creator": "Mindful Growth",
+    "uploadDate": "2025-11-09T07:10:00Z",
+    "duration": 2900000,
+    "description": "Actionable tips based on psychological research to increase daily happiness.",
+    "category": "Self-Improvement",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid068",
+    "title": "How to Build a Simple E-commerce Website",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-11-12T11:40:00Z",
+    "duration": 6800000,
+    "description": "A step-by-step tutorial on creating a basic online store from scratch.",
+    "category": "Education",
+    "status": "DRAFT"
+  },
+  {
+    "id": "vid069",
+    "title": "The Yellowstone Supervolcano: A Geologic Marvel",
+    "creator": "Science Unlocked",
+    "uploadDate": "2025-11-15T16:00:00Z",
+    "duration": 5000000,
+    "description": "Exploring the history and potential future impact of the Yellowstone caldera.",
+    "category": "Science",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid070",
+    "title": "Yoga for Back Pain Relief",
+    "creator": "Wellness Studio",
+    "uploadDate": "2025-11-18T06:30:00Z",
+    "duration": 1800000,
+    "description": "Gentle yoga stretches and poses specifically designed to alleviate back discomfort.",
+    "category": "Health",
+    "status": "DELETED"
+  },
+    {
+    "id": "vid071",
+    "title": "A Culinary Tour of Tokyo's Izakayas",
+    "creator": "Global Eats",
+    "uploadDate": "2025-11-20T17:00:00Z",
+    "duration": 3500000,
+    "description": "Experience the vibrant nightlife and delicious small plates of Tokyo's traditional pubs.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid072",
+    "title": "Full-Stack Development with Spring Boot & React",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-11-22T10:00:00Z",
+    "duration": 8500000,
+    "description": "A comprehensive course on building modern full-stack applications.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid073",
+    "title": "The Big Five: Safari in Kruger National Park",
+    "creator": "NatureDocs",
+    "uploadDate": "2025-11-25T14:30:00Z",
+    "duration": 7200000,
+    "description": "An immersive wildlife documentary showcasing the iconic animals of Kruger National Park.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid074",
+    "title": "Generative AI: Creating Art with Neural Networks",
+    "creator": "AI Simplified",
+    "uploadDate": "2025-11-28T11:15:00Z",
+    "duration": 4800000,
+    "description": "Learn the basics of generative adversarial networks (GANs) and creative AI applications.",
+    "category": "Technology",
+    "status": "PENDING_REVIEW"
+  },
+  {
+    "id": "vid075",
+    "title": "Investing in Real Estate: Beginner's Handbook",
+    "creator": "MoneySense",
+    "uploadDate": "2025-12-01T09:00:00Z",
+    "duration": 6000000,
+    "description": "A foundational guide to understanding and starting real estate investments.",
+    "category": "Finance",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid076",
+    "title": "Smartphone Photography: Advanced Editing Techniques",
+    "creator": "PixelPerfect",
+    "uploadDate": "2025-12-03T15:45:00Z",
+    "duration": 2900000,
+    "description": "Unlocking the full potential of your smartphone camera with powerful editing apps.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid077",
+    "title": "Meditation for Deep Sleep",
+    "creator": "Zen Living",
+    "uploadDate": "2025-12-05T21:00:00Z",
+    "duration": 1500000,
+    "description": "A calming guided meditation designed to help you fall asleep faster and deeper.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid078",
+    "title": "JavaScript Frameworks: Choosing the Right One",
+    "creator": "TechWithTim",
+    "uploadDate": "2025-12-08T13:20:00Z",
+    "duration": 4200000,
+    "description": "A comparative analysis of popular JavaScript frameworks like React, Angular, and Vue.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid079",
+    "title": "How to Build a Backyard Pond",
+    "creator": "GreenThumb",
+    "uploadDate": "2025-12-10T08:30:00Z",
+    "duration": 5400000,
+    "description": "Step-by-step instructions for designing and constructing a beautiful backyard water feature.",
+    "category": "DIY",
+    "status": "DRAFT"
+  },
+  {
+    "id": "vid080",
+    "title": "The Untold Story of the Berlin Wall",
+    "creator": "HistoryBuffs",
+    "uploadDate": "2025-12-12T19:00:00Z",
+    "duration": 6600000,
+    "description": "A compelling documentary about the construction, fall, and impact of the Berlin Wall.",
+    "category": "History",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid081",
+    "title": "Baking with Gluten-Free Flours",
+    "creator": "Baker's Corner",
+    "uploadDate": "2025-12-15T12:00:00Z",
+    "duration": 4000000,
+    "description": "Tips and recipes for successful baking with various gluten-free flour alternatives.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid082",
+    "title": "The Science of Procrastination and How to Beat It",
+    "creator": "Mindful Growth",
+    "uploadDate": "2025-12-18T07:45:00Z",
+    "duration": 3100000,
+    "description": "Understanding the psychology behind procrastination and effective strategies to overcome it.",
+    "category": "Self-Improvement",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid083",
+    "title": "Exploring the Fjords of Norway",
+    "creator": "Anna Müller",
+    "uploadDate": "2025-12-20T11:00:00Z",
+    "duration": 6800000,
+    "description": "A stunning visual journey through the majestic fjords and landscapes of Norway.",
+    "category": "Travel",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid084",
+    "title": "Building a Decentralized Application (DApp) with Ethereum",
+    "creator": "CodeAcademy",
+    "uploadDate": "2025-12-22T14:00:00Z",
+    "duration": 7500000,
+    "description": "A hands-on guide to developing your first DApp on the Ethereum blockchain.",
+    "category": "Technology",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid085",
+    "title": "The Private Lives of Big Cats",
+    "creator": "NatureDocs",
+    "uploadDate": "2025-12-25T16:00:00Z",
+    "duration": 6000000,
+    "description": "An intimate look into the behavior and conservation efforts for lions, tigers, and leopards.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid086",
+    "title": "Cooking for One: Simple & Healthy Meals",
+    "creator": "Global Eats",
+    "uploadDate": "2025-12-28T13:00:00Z",
+    "duration": 2500000,
+    "description": "Quick and nutritious recipes perfectly portioned for single servings.",
+    "category": "Food",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid087",
+    "title": "Cybersecurity: Protecting Your Digital Footprint",
+    "creator": "CyberGuardian",
+    "uploadDate": "2026-01-02T09:00:00Z",
+    "duration": 5000000,
+    "description": "Practical steps to enhance your online privacy and security in the digital age.",
+    "category": "Technology",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid088",
+    "title": "Yoga for Flexibility and Strength",
+    "creator": "Wellness Studio",
+    "uploadDate": "2026-01-05T07:00:00Z",
+    "duration": 2000000,
+    "description": "A dynamic yoga flow designed to improve range of motion and build core strength.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid089",
+    "title": "The Roman Empire: Decline and Fall",
+    "creator": "HistoryBuffs",
+    "uploadDate": "2026-01-08T18:30:00Z",
+    "duration": 7000000,
+    "description": "An examination of the factors that led to the collapse of the Western Roman Empire.",
+    "category": "History",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid090",
+    "title": "Beginner's Guide to Stock Options Trading",
+    "creator": "MoneySense",
+    "uploadDate": "2026-01-10T10:30:00Z",
+    "duration": 5500000,
+    "description": "An introduction to options trading for beginners, covering calls, puts, and strategies.",
+    "category": "Finance",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid091",
+    "title": "Artificial Intelligence Ethics: Bias and Fairness",
+    "creator": "AI Simplified",
+    "uploadDate": "2026-01-12T14:00:00Z",
+    "duration": 4800000,
+    "description": "A critical discussion on ethical considerations in AI development, focusing on bias detection and mitigation.",
+    "category": "Technology",
+    "status": "PENDING_REVIEW"
+  },
+  {
+    "id": "vid092",
+    "title": "Portrait Painting Techniques: Oil Mediums",
+    "creator": "Art Fundamentals",
+    "uploadDate": "2026-01-15T11:00:00Z",
+    "duration": 5200000,
+    "description": "Mastering the classic art of portrait painting using oil paints.",
+    "category": "Art & Design",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid093",
+    "title": "Homesteading: Starting Your Own Vegetable Garden",
+    "creator": "GreenThumb",
+    "uploadDate": "2026-01-18T09:15:00Z",
+    "duration": 3800000,
+    "description": "Everything you need to know to establish a productive vegetable garden for self-sufficiency.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid094",
+    "title": "The Science of Sleep: Dreams and the Brain",
+    "creator": "Wellness Studio",
+    "uploadDate": "2026-01-20T06:45:00Z",
+    "duration": 3000000,
+    "description": "Exploring the neuroscience behind dreams and their role in mental well-being.",
+    "category": "Health",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid095",
+    "title": "Java Spring Framework: Aspect-Oriented Programming (AOP)",
+    "creator": "TechWithTim",
+    "uploadDate": "2026-01-22T13:00:00Z",
+    "duration": 4500000,
+    "description": "A deep dive into Spring AOP for cross-cutting concerns in your applications.",
+    "category": "Education",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid096",
+    "title": "Wildlife Rescue: Rehabilitating Injured Animals",
+    "creator": "NatureDocs",
+    "uploadDate": "2026-01-25T15:00:00Z",
+    "duration": 6500000,
+    "description": "Follow a team of dedicated rescuers as they care for and release injured wild animals.",
+    "category": "Nature",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid097",
+    "title": "Learning to Play the Ukulele: Beginner Chords",
+    "creator": "GuitarGuru",
+    "uploadDate": "2026-01-28T17:30:00Z",
+    "duration": 2100000,
+    "description": "A fun and easy lesson for absolute beginners to start playing the ukulele.",
+    "category": "Music",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "vid098",
+    "title": "Exploring Abandoned Castles in Europe",
+    "creator": "Urban Explorers",
+    "uploadDate": "2026-01-30T14:00:00Z",
+    "duration": 8000000,
+    "description": "A captivating tour through forgotten castles and their rich, eerie histories across Europe.",
+    "category": "Documentary",
+    "status": "DELETED"
+  },
+  {
+    "id": "vid099",
+    "title": "Vegan Meal Prep: Healthy & Delicious Recipes",
+    "creator": "Baker's Corner",
+    "uploadDate": "2026-02-01T12:00:00Z",
+    "duration": 3200000,
+    "description": "Efficient and tasty plant-based meal prep ideas for a week of healthy eating.",
+    "category": "Food",
+    "status": "ARCHIVED"
+  },
+  {
+    "id": "vid100",
+    "title": "Sustainable Fashion: Your Guide to Ethical Choices",
+    "creator": "EcoTrends",
+    "uploadDate": "2026-02-05T10:00:00Z",
+    "duration": 4000000,
+    "description": "Understanding the impact of fashion and how to make more sustainable clothing choices.",
+    "category": "Lifestyle",
+    "status": "ACTIVE"
+  }
+]
