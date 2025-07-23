@@ -1,30 +1,41 @@
 package com.goldmediatech.vms.service;
 
+import java.util.List;
+
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.goldmediatech.vms.client.VideoMetadataClient;
-import com.goldmediatech.vms.persistence.VideoMetadataRepository;
+import com.goldmediatech.vms.persistence.VideoMetadataLoader;
 import com.goldmediatech.vms.service.dto.IngestDto;
+import com.goldmediatech.vms.service.dto.SearchFilterDto;
+import com.goldmediatech.vms.service.dto.VideoMetadataDto;
 import com.goldmediatech.vms.util.MessageQueue;
 
 @Service
 public class VideoService {
 
     private final VideoMetadataClient videoMetadataClient;
-    private final VideoMetadataRepository videoMetadataRepository;
+    private final VideoMetadataLoader videoMetadataLoader;
 
-    public VideoService(VideoMetadataClient videoMetadataClient, VideoMetadataRepository videoMetadataRepository) {
+    public VideoService(VideoMetadataClient videoMetadataClient, VideoMetadataLoader videoMetadataLoader) {
         this.videoMetadataClient = videoMetadataClient;
-        this.videoMetadataRepository = videoMetadataRepository;
+        this.videoMetadataLoader = videoMetadataLoader;
     }
 
     @Async
     public void importVideoMetadata(IngestDto dto) {
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, String.format("[%s] Requesting video metadata", Thread.currentThread()));
         var response = videoMetadataClient.requestVideoMetadata(dto);
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, String.format("[%s] Received video metadata", Thread.currentThread()));
-        videoMetadataRepository.save(response);
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, String.format("[%s] Video metadata import completed", Thread.currentThread()));
+        videoMetadataLoader.saveVideoMetadata(response);
+        // Simulate successful message to a broker for processes like push notifications, mail, etc.
+        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA, "Video Metadata Imported Stub");
+    }
+
+    public List<VideoMetadataDto> searchVideos(SearchFilterDto searchFilter) {
+        return videoMetadataLoader.findAllVideoMetadata();
+    }
+
+    public VideoMetadataDto searchVideo(Long id) {
+        return videoMetadataLoader.findVideoById(id);
     }
 }

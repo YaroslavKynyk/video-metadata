@@ -11,6 +11,9 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,16 +25,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.goldmediatech.vms.service.VideoService;
+import com.goldmediatech.vms.service.dto.SearchFilterDto;
 import com.goldmediatech.vms.util.GlobalExceptionHandler;
-import com.goldmediatech.vms.util.MessageQueue;
 import com.goldmediatech.vms.util.VideoMetadataMapper;
 import com.goldmediatech.vms.web.message.IngestRequest;
+import com.goldmediatech.vms.web.message.VideoResponse;
 
 @RestController
 @RequestMapping("/api/videos")
 @Tag(
-    name = "Video Metadata",
-    description = "Operations related to processing videos metadata."
+    name = "Video",
+    description = "Operations related to processing videos."
 )
 @SecurityRequirement(name = "JWT Auth")
 @SecurityScheme(
@@ -47,11 +51,11 @@ import com.goldmediatech.vms.web.message.IngestRequest;
         @ApiResponse(responseCode = "403", description = GlobalExceptionHandler.CODE_403_ERROR_MESSAGE),
         @ApiResponse(responseCode = "500", description = GlobalExceptionHandler.CODE_500_ERROR_MESSAGE)
 })
-public class VideoMetadataController {
+public class VideoController {
 
     private final VideoService videoService;
 
-    public VideoMetadataController(VideoService videoService) {
+    public VideoController(VideoService videoService) {
         this.videoService = videoService;
     }
 
@@ -98,25 +102,30 @@ public class VideoMetadataController {
     @PostMapping("/import")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> importVideoMetadata(@RequestBody IngestRequest request) {
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA,
-                String.format("[%s] Requesting video metadata", Thread.currentThread()));
         videoService.importVideoMetadata(VideoMetadataMapper.toIngestDto(request));
-        MessageQueue.sendMessage(MessageQueue.TOPIC_VIDEO_METADATA,
-                String.format("[%s] Video metadata import request sent", Thread.currentThread()));
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<?> loadAllVideos(
-            @RequestParam(required = false) String source,
-            @RequestParam(required = false) String uploadDate,
-            @RequestParam(required = false) Integer duration) {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<VideoResponse>> loadAllVideos(
+            @RequestParam(name = "source", required = false) String source,
+            @RequestParam(name = "uploadDate", required = false) String uploadDate,
+            @RequestParam(name = "duration", required = false) Long duration) {
+        var videos = videoService.searchVideos(SearchFilterDto.builder()
+                .source(source)
+                .uploadDate(LocalDate.parse(uploadDate))
+                .duration(duration)
+                .build());
+        var response = videos.stream()
+                .map(VideoMetadataMapper::toVideoResponse)
+                .toList();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> loadVideo(@PathVariable String id) {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<VideoResponse> loadVideo(@PathVariable Long id) {
+        var video = videoService.searchVideo(id);
+        return ResponseEntity.ok(VideoMetadataMapper.toVideoResponse(video));
     }
 
     @GetMapping("/stats")
