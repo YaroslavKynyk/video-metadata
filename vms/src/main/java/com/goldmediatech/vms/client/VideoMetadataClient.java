@@ -50,10 +50,14 @@ public class VideoMetadataClient {
                 throw new RuntimeException("Fixture file not found");
             }
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(inputStream,
-                    objectMapper
-                            .getTypeFactory()
-                            .constructCollectionType(List.class, VideoMetadataResponse.class));
+            List<VideoMetadataResponse> all = objectMapper.readValue(
+                    inputStream,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, VideoMetadataResponse.class));
+
+            if (dto.limit() > 0 && dto.limit() < all.size()) {
+                return all.stream().limit(dto.limit()).toList();
+            }
+            return all;
         } catch (IOException e) {
             throw new RuntimeException("Failed to load video metadata fixture", e);
         }

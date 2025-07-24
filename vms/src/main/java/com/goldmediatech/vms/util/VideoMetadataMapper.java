@@ -1,12 +1,14 @@
 package com.goldmediatech.vms.util;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.goldmediatech.vms.client.message.VideoMetadataResponse;
 import com.goldmediatech.vms.service.dto.IngestDto;
 import com.goldmediatech.vms.service.dto.VideoMetadataDto;
+import com.goldmediatech.vms.service.dto.VideoStatisticsDto;
 import com.goldmediatech.vms.web.message.IngestRequest;
 import com.goldmediatech.vms.web.message.VideoResponse;
+import com.goldmediatech.vms.web.message.VideoStatisticsResponse;
 
 public final class VideoMetadataMapper {
 
@@ -24,11 +26,11 @@ public final class VideoMetadataMapper {
 
     public static VideoMetadataDto toVideoMetadataDto(VideoMetadataResponse videoMetadata, String source) {
         return VideoMetadataDto.builder()
-                .id(Long.valueOf(videoMetadata.id()))
+                .sourceId(videoMetadata.id())
                 .source(source)
                 .title(videoMetadata.title())
                 .creator(videoMetadata.creator())
-                .uploadDate(LocalDateTime.parse(videoMetadata.uploadDate()))
+                .uploadDate(OffsetDateTime.parse(videoMetadata.uploadDate()).toLocalDateTime())
                 .duration(videoMetadata.duration())
                 .description(videoMetadata.description())
                 .category(videoMetadata.category())
@@ -45,6 +47,13 @@ public final class VideoMetadataMapper {
                 video.creator(),
                 video.category(),
                 video.status()
+        );
+    }
+
+    public static VideoStatisticsResponse toVideoStatisticsResponse(VideoStatisticsDto dto) {
+        return new VideoStatisticsResponse(
+                dto.title(),
+                dto.statistics()
         );
     }
 }

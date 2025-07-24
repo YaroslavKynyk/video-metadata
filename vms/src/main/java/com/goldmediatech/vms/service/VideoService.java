@@ -1,6 +1,8 @@
 package com.goldmediatech.vms.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import com.goldmediatech.vms.persistence.VideoMetadataLoader;
 import com.goldmediatech.vms.service.dto.IngestDto;
 import com.goldmediatech.vms.service.dto.SearchFilterDto;
 import com.goldmediatech.vms.service.dto.VideoMetadataDto;
+import com.goldmediatech.vms.service.dto.VideoStatisticsDto;
 import com.goldmediatech.vms.util.MessageQueue;
 
 @Service
@@ -37,5 +40,44 @@ public class VideoService {
 
     public VideoMetadataDto searchVideo(Long id) {
         return videoMetadataLoader.findVideoById(id);
+    }
+
+    public List<VideoStatisticsDto> loadVideoStatistics() {
+        var videos = videoMetadataLoader.findAllVideoMetadata();
+        // extract all video sources distinctly
+        var sources = videos.stream()
+                .map(VideoMetadataDto::source)
+                .distinct()
+                .collect(Collectors.toList());
+
+        // calculate videos per source
+        var videoCounts = videos.stream()
+                .collect(
+                    Collectors.groupingBy(VideoMetadataDto::source,
+                    Collectors.counting()));
+
+        // calculate video duration per source
+        var videoDurations = videos.stream()
+                .collect(
+                    Collectors.groupingBy(VideoMetadataDto::source,
+                    Collectors.summingLong(VideoMetadataDto::duration)));
+
+        var statistics = new ArrayList<VideoStatisticsDto>();
+        sources.forEach(source -> {
+            statistics.add(new VideoStatisticsDto(
+                source + " videos total",
+                videoCounts.getOrDefault(source, 0L)
+            ));
+            statistics.add(new VideoStatisticsDto(
+                source + " videos duration average",
+                toMinutesDurationFormat(
+                    videoDurations.getOrDefault(source, 0L) / videoCounts.getOrDefault(source, 1L))
+            ));
+        });
+        return statistics;
+    }
+
+    private String toMinutesDurationFormat(long duration) {
+        return duration / 60000 + " minutes";
     }
 }

@@ -1,12 +1,8 @@
 package com.goldmediatech.vms.persistence;
 
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
-
 import com.goldmediatech.vms.service.dto.VideoMetadataDto;
-import com.goldmediatech.vms.util.VideoMetadataMapper;
-
 import jakarta.persistence.EntityNotFoundException;
 
 @Repository
@@ -40,6 +36,7 @@ public class VideoMetadataLoader {
     private VideoMetadataEntity toEntity(VideoMetadataDto dto) {
         var entity = new VideoMetadataEntity();
         entity.setSourceId(dto.sourceId());
+        entity.setSource(dto.source());
         entity.setTitle(dto.title());
         entity.setCreator(dto.creator());
         entity.setUploadDate(dto.uploadDate());

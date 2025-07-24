@@ -18,7 +18,6 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +31,7 @@ import com.goldmediatech.vms.util.GlobalExceptionHandler;
 import com.goldmediatech.vms.util.VideoMetadataMapper;
 import com.goldmediatech.vms.web.message.IngestRequest;
 import com.goldmediatech.vms.web.message.VideoResponse;
+import com.goldmediatech.vms.web.message.VideoStatisticsResponse;
 
 @RestController
 @RequestMapping("/api/videos")
@@ -164,8 +164,23 @@ public class VideoController {
         return ResponseEntity.ok(VideoMetadataMapper.toVideoResponse(video));
     }
 
+    @Operation(
+        summary = "Get video statistics",
+        description = "Retrieves a list of video analytics.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Successfully retrieved video statistics.",
+                content = @Content(mediaType = "application/json",
+                                   schema = @Schema(implementation = VideoStatisticsResponse.class, type = "array"))
+            )
+        }
+    )
     @GetMapping("/stats")
-    public ResponseEntity<?> loadVideoStatistics() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<List<VideoStatisticsResponse>> loadVideoStatistics() {
+        var response = videoService.loadVideoStatistics().stream()
+                .map(VideoMetadataMapper::toVideoStatisticsResponse)
+                .toList();
+        return ResponseEntity.ok(response);
     }
 }
