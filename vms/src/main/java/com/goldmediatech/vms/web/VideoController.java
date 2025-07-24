@@ -1,6 +1,7 @@
 package com.goldmediatech.vms.web;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -17,6 +18,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -106,8 +108,26 @@ public class VideoController {
         return ResponseEntity.ok().build();
     }
 
+        @Operation(
+        summary = "Search and retrieve video metadata",
+        description = "Retrieves a list of video metadata records, optionally filtered by source, upload date, or duration. " +
+                      "Parameters are optional and can be combined.",
+        parameters = {
+            @Parameter(name = "source", description = "Filter by the video source.", example = "YouTube"),
+            @Parameter(name = "uploadDate", description = "Filter by upload date (YYYY-MM-DD).", example = "2025-07-23"),
+            @Parameter(name = "duration", description = "Filter by minimum video duration in milliseconds.", example = "3600000")
+        },
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Successfully retrieved list of videos.",
+                content = @Content(mediaType = "application/json",
+                                   schema = @Schema(implementation = VideoResponse.class, type = "array"))
+            )
+        }
+    )
     @GetMapping
-    public ResponseEntity<List<VideoResponse>> loadAllVideos(
+    public ResponseEntity<List<VideoResponse>> searchVideos(
             @RequestParam(name = "source", required = false) String source,
             @RequestParam(name = "uploadDate", required = false) String uploadDate,
             @RequestParam(name = "duration", required = false) Long duration) {
@@ -122,8 +142,24 @@ public class VideoController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(
+        summary = "Retrieve video metadata by ID",
+        description = "Fetches the detailed metadata for a single video using its unique identifier.",
+        parameters = {
+            @Parameter(name = "id", description = "The unique identifier of the video.", required = true, example = "101",
+                       schema = @Schema(type = "integer", format = "int64"))
+        },
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Successfully retrieved video metadata.",
+                content = @Content(mediaType = "application/json",
+                                   schema = @Schema(implementation = VideoResponse.class))
+            )
+        }
+    )
     @GetMapping("/{id}")
-    public ResponseEntity<VideoResponse> loadVideo(@PathVariable Long id) {
+    public ResponseEntity<VideoResponse> searchVideo(@PathVariable Long id) {
         var video = videoService.searchVideo(id);
         return ResponseEntity.ok(VideoMetadataMapper.toVideoResponse(video));
     }
